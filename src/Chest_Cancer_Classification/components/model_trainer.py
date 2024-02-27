@@ -36,7 +36,7 @@ class Training:
         )
 
         # For validation data
-        validation_data_dir = Path(self.config.training_data)  / 'test'
+        validation_data_dir = Path(self.config.training_data)  / 'Data'/'test'
         self.valid_generator = valid_datagenerator.flow_from_directory(
             directory=str(validation_data_dir),
             shuffle=False,
@@ -57,7 +57,7 @@ class Training:
         else:
             train_datagenerator = valid_datagenerator
 
-        training_data_dir = Path(self.config.training_data)  / 'train'
+        training_data_dir = Path(self.config.training_data) /'Data' / 'train'
         self.train_generator = train_datagenerator.flow_from_directory(
             directory=str(training_data_dir),
             shuffle=True,
