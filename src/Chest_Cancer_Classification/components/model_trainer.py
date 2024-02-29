@@ -19,7 +19,7 @@ class Training:
     def train_valid_generator(self):
         datagenerator_kwargs = dict(
             rescale=1./255,
-            validation_split=0.20
+            validation_split=0.30
         )
 
         dataflow_kwargs = dict(
@@ -33,7 +33,7 @@ class Training:
         )
 
         # For validation data
-        validation_data_dir = Path(self.config.training_data)  / 'Data'/'test'
+        validation_data_dir = Path(self.config.training_data)  
         self.valid_generator = valid_datagenerator.flow_from_directory(
             directory=str(validation_data_dir),
             shuffle=False,
@@ -54,7 +54,7 @@ class Training:
         else:
             train_datagenerator = valid_datagenerator
 
-        training_data_dir = Path(self.config.training_data) /'Data' / 'train'
+        training_data_dir = Path(self.config.training_data)
         self.train_generator = train_datagenerator.flow_from_directory(
             directory=str(training_data_dir),
             shuffle=True,

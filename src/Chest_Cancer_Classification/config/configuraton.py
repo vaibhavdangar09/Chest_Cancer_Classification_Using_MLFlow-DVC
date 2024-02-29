@@ -56,7 +56,7 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "chest_cancer_img")
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Chest-CT-Scan-data")
         create_directories([
             Path(training.root_dir)
         ])
@@ -79,10 +79,12 @@ class ConfigurationManager:
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
-            training_data="artifacts/data_ingestion/chest_cancer_img/Data/train",
+            training_data="artifacts/data_ingestion/Chest-CT-Scan-data",
             mlflow_uri=os.environ['MLFLOW_TRACKING_URI'],
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE
         )
         return eval_config
+    
+    
