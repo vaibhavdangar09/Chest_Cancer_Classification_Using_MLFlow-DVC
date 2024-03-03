@@ -1,4 +1,4 @@
-# Chest_Cancer_Classification_Using_MLFlow-DVC
+# End_To_End_Animal_Classification_Using_MLFlow-DVC
 
 # Workflow
 
