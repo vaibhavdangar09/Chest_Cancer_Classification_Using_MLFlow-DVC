@@ -4,7 +4,7 @@ import urllib.request as request
 from zipfile import ZipFile
 import tensorflow as tf
 import time
-from tensorflow.keras.callbacks import EarlyStopping
+# from tensorflow.keras.callbacks import EarlyStopping
 
 
 
@@ -19,7 +19,7 @@ class Training:
     def train_valid_generator(self):
         datagenerator_kwargs = dict(
             rescale=1./255,
-            validation_split=0.30
+            validation_split=0.20
         )
 
         dataflow_kwargs = dict(
@@ -33,9 +33,15 @@ class Training:
         )
 
         # For validation data
-        validation_data_dir = Path(self.config.training_data)  
+        # validation_data_dir = Path(self.config.training_data)  
+        # self.valid_generator = valid_datagenerator.flow_from_directory(
+        #     directory=str(validation_data_dir),
+        #     shuffle=False,
+        #     **dataflow_kwargs
+        # )
         self.valid_generator = valid_datagenerator.flow_from_directory(
-            directory=str(validation_data_dir),
+            directory=self.config.training_data / 'test',
+            subset="validation",
             shuffle=False,
             **dataflow_kwargs
         )
@@ -54,7 +60,7 @@ class Training:
         else:
             train_datagenerator = valid_datagenerator
 
-        training_data_dir = Path(self.config.training_data)
+        training_data_dir = Path(self.config.training_data/'train')
         self.train_generator = train_datagenerator.flow_from_directory(
             directory=str(training_data_dir),
             shuffle=True,
@@ -62,18 +68,18 @@ class Training:
         )
 
     @staticmethod
-    def save_model(path, model):
+    def save_model(path:Path, model: tf.keras.Model):
         model.save(path)
 
     def train(self):
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
 
-        early_stopping = EarlyStopping(
-            monitor='val_loss',  # or another metric you want to monitor
-            patience=self.config.early_stopping_patience,
-            restore_best_weights=True
-        )
+        # early_stopping = EarlyStopping(
+        #     monitor='val_loss',  # or another metric you want to monitor
+        #     patience=self.config.early_stopping_patience,
+        #     restore_best_weights=True
+        # )
 
         self.model.fit(
             self.train_generator,
@@ -81,7 +87,7 @@ class Training:
             steps_per_epoch=self.steps_per_epoch,
             validation_steps=self.validation_steps,
             validation_data=self.valid_generator,
-            callbacks=[early_stopping]
+            # callbacks=[early_stopping]
         )
 
         self.save_model(path=self.config.trained_model_path, model=self.model)

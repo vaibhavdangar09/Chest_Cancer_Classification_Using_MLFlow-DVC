@@ -29,12 +29,20 @@ class Evaluation:
         )
 
         # For validation data
-        validation_data_dir = Path(self.config.training_data) 
+        # validation_data_dir = Path(self.config.training_data) 
+        # self.valid_generator = valid_datagenerator.flow_from_directory(
+        #     directory=str(validation_data_dir),
+        #     shuffle=False,
+        #     **dataflow_kwargs
+        # )
+
         self.valid_generator = valid_datagenerator.flow_from_directory(
-            directory=str(validation_data_dir),
+            directory=Path(self.config.training_data )/'test',
+            subset="validation",
             shuffle=False,
             **dataflow_kwargs
         )
+
 
     @staticmethod
     def load_model(path: Path) -> tf.keras.Model:
