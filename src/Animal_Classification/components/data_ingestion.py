@@ -1,9 +1,9 @@
 import os
 import zipfile
 import gdown
-from Animal_Classification import logger
-from Animal_Classification.utils.common import get_size
-from Animal_Classification.entity.config_entity import DataIngestionConfig
+from src.Animal_Classification import logger
+from src.Animal_Classification.utils.common import get_size
+from src.Animal_Classification.entity.config_entity import DataIngestionConfig
 
 # update component
 class DataIngestion:
@@ -16,7 +16,7 @@ class DataIngestion:
         '''
 
         try: 
-            dataset_url = self.config.source_url
+            dataset_url = self.config.source_URL
             zip_download_dir = self.config.local_data_file
             os.makedirs("artifacts/data_ingestion", exist_ok=True)
             logger.info(f"Downloading data from {dataset_url} into file {zip_download_dir}")
