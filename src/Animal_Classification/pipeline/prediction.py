@@ -2,6 +2,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import os
+import shutil
 
 
 class PredictionPipeline:
@@ -9,10 +10,16 @@ class PredictionPipeline:
         self.filename = filename
 
     def predict(self):
+        destination_directory="model"
+        file_path=r"artifacts/training/model.h5"
+        if not os.path.exists(destination_directory):
+            os.makedirs(destination_directory)
+        shutil.copy(file_path, destination_directory)
+        print("Model copied to Model directory")
         ## load model
 
-        model = load_model(os.path.join("artifacts","training", "model.h5"))
-        # model = load_model(os.path.join("model", "model.h5"))
+        # model = load_model(os.path.join("artifacts","training", "model.h5"))
+        model = load_model(os.path.join("model", "model.h5"))
 
         imagename = self.filename
         test_image = image.load_img(imagename, target_size=(224, 224))
