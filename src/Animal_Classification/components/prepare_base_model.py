@@ -2,7 +2,7 @@ import os
 import urllib.request as request
 from zipfile import ZipFile
 import tensorflow as tf
-from Chest_Cancer_Classification.entity.config_entity import PrepareBaseModelConfig
+from Animal_Classification.entity.config_entity import PrepareBaseModelConfig
 from pathlib import Path
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing import image_dataset_from_directory

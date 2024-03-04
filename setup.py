@@ -6,9 +6,9 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.0"
 
-REPO_NAME = "Chest_Cancer_Classification_Using_MLFlow-DVC"
+REPO_NAME = "End_To_End_Animal_Classification_Using_MLFlow_DVC"
 AUTHOR_USER_NAME = "vaibhavdangar09"
-SRC_REPO = "Chest_Cancer_Classification_Using_MLFlow-DVC"
+SRC_REPO = "End_To_End_Animal_Classification_Using_MLFlow_DVC"
 AUTHOR_EMAIL = "vaibhavdangar20@gmail.com"
 
 
@@ -17,7 +17,7 @@ setuptools.setup(
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description="Chest Cancer Claasification Using MLFlow & DVC",
+    description="End_To_End_Animal_Classification_Using_MLFlow & DVC",
     long_description=long_description,
     long_description_content="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",

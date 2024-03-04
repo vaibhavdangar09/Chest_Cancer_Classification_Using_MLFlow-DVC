@@ -3,8 +3,8 @@ from pathlib import Path
 import mlflow
 import mlflow.keras
 from urllib.parse import urlparse
-from Chest_Cancer_Classification.entity.config_entity import EvaluationConfig
-from Chest_Cancer_Classification.utils.common import save_json
+from Animal_Classification.entity.config_entity import EvaluationConfig
+from Animal_Classification.utils.common import save_json
 
 # model = tf.keras.models.load_model("artifacts/training/model.h5")
 

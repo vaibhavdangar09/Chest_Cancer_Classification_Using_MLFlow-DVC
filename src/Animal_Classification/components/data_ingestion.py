@@ -1,9 +1,9 @@
 import os
 import zipfile
 import gdown
-from Chest_Cancer_Classification import logger
-from Chest_Cancer_Classification.utils.common import get_size
-from Chest_Cancer_Classification.entity.config_entity import DataIngestionConfig
+from Animal_Classification import logger
+from Animal_Classification.utils.common import get_size
+from Animal_Classification.entity.config_entity import DataIngestionConfig
 
 # update component
 class DataIngestion:

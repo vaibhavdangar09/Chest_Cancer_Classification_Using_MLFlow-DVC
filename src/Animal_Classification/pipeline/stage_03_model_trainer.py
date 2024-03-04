@@ -1,6 +1,6 @@
-from Chest_Cancer_Classification.config.configuraton import ConfigurationManager
-from Chest_Cancer_Classification.components.model_trainer import Training
-from Chest_Cancer_Classification import logger
+from Animal_Classification.config.configuraton import ConfigurationManager
+from Animal_Classification.components.model_trainer import Training
+from Animal_Classification import logger
 
 STAGE_NAME = "Model Training"
 
