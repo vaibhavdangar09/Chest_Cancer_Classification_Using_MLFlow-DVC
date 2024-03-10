@@ -16,9 +16,7 @@ class PredictionPipeline:
             os.makedirs(destination_directory)
         shutil.copy(file_path, destination_directory)
         print("Model copied to Model directory")
-        ## load model
-
-        # model = load_model(os.path.join("artifacts","training", "model.h5"))
+      
         model = load_model(os.path.join("model", "model.h5"))
 
         imagename = self.filename
